@@ -52,11 +52,6 @@ export const StyledLink = styled(Link)(({ theme, color = "#6065D8" }) => ({
     textAlign: "right",
 }));
 
-const schema = yup.object().shape({
-    email: yup.string().email().required(),
-    password: yup.string().min(8).max(14).required()
-})
-
 const style = {
     position: 'absolute',
     top: '50%',
@@ -68,6 +63,18 @@ const style = {
     p: 4,
 };
 
+export const SignUpLink = styled('a')`
+    font-weight: 300 !important;
+    font-size: 14px;
+    line-height: 21px;
+    color: #2D2D2D;
+    text-decoration: none;
+`
+
+const schema = yup.object().shape({
+    email: yup.string().email().required(),
+    password: yup.string().required()
+})
 
 
 const LoginForm = () => {
@@ -142,9 +149,9 @@ const LoginForm = () => {
                             />
                         )}
                     />
-                    <StyledLabel sx={{ marginTop: '15px', fontSize: '15px', cursor: 'pointer' }}>
+                    <SignUpLink sx={{ marginTop: '15px', fontSize: '15px', cursor: 'pointer' }} href="/signup">
                         New User Sign up
-                    </StyledLabel>
+                    </SignUpLink>
             </StyledFormGroup>
             <StyledButton>
                 {isLoading ? <CircularProgress sx={{ color: "#fff" }} /> : "Login"}

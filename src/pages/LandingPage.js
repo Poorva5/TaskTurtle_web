@@ -14,7 +14,7 @@ const GetStartedButton = styled('a')(({theme}) => ({
 
 const LandingPage = () => {
     return (
-        <div>
+        <div style={{backgroundColor: '#ecfff9', height: '100vh'}}>
             <div style={{ display: 'flex',flexDirection: 'row', margin: 'auto', paddingTop: '120px', justifyContent: 'center'}}> 
                 <div>
                     <h1 style={{ color: '#111826', fontSize: '85px', fontFamily: '"Outfit", Sans-serif', fontWeight: 500, width: '520px', textAlign: 'left', lineHeight: '1.1 rem', letterSpacing: '-1.7px'}}>Organize your life with one tool</h1>
@@ -22,7 +22,7 @@ const LandingPage = () => {
                 </div>
                 <div><img src={landing} alt='landing page' height={452} width={560} ></img></div>
             </div>
-                </div>  
+        </div>  
     )
 }
 

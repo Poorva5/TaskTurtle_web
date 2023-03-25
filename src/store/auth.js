@@ -6,8 +6,6 @@ const apiWithoutToken = axios.create({
     headers: {
         "Content-Type": "Application/json",
     },
-    xsrfCookieName: "csrftoken",
-    xsrfHeaderName: "X-CSRFTOKEN",
 })
 
 const { createSlice } = require("@reduxjs/toolkit");
@@ -58,9 +56,33 @@ export function LoginUser(data) {
             dispatch(login(res.data))
             dispatch(setAuthorized(true));
             dispatch(setLoading());
+            window.location.href = '/home'
         } catch {
             dispatch(setLoading());
             dispatch(setAuthorized(false))
         }
     };
+}
+
+
+export function SignUpUser(data) {
+    return async function SignUpUserThunk(
+        dispatch,
+        getState
+    ) {
+        dispatch(setLoading());
+        try {
+            const res = await apiWithoutToken.post(
+                "/dj-rest-auth/registration/",
+                data
+            );
+            dispatch(login(res.data))
+            dispatch(setAuthorized(true));
+            dispatch(setLoading()); 
+            window.location.href = '/home'   
+        } catch (err) {
+            dispatch(setLoading());
+            dispatch(setAuthorized(false))
+        }
+    }
 }
