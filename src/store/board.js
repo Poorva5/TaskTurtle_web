@@ -47,7 +47,6 @@ export function fetchBoardList(data) {
             const res = await apiWithToken.get(
                 `/api/task/board/`, 
             );
-            console.log(res.data)
             dispatch(setBoards(res.data))
             dispatch(setLoading());
         } catch (err) {
@@ -66,7 +65,6 @@ export function createBoard(data) {
                 `api/task/board/`,
                 data
             );
-            console.log(res.data)
             dispatch(fetchBoardList())
             dispatch(setLoading())
         } catch (err) {
