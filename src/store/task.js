@@ -44,12 +44,10 @@ export function fetchTaskList(data) {
     return async function fetchTaskListThunk(
         dispatch
     ) {
-        dispatch(setLoading());
         try {
             const res = await apiWithToken.get(
                 "api/task"
             );
-            console.log(res.data)
             dispatch(setTasks(res.data))
             dispatch(setLoading())
         } catch (err) {
